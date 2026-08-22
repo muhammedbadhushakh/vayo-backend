@@ -1,0 +1,10 @@
+{
+  "name": "vayo-collection",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vayo Collection — static storefront + Netlify Functions backend for Razorpay payments.",
+  "dependencies": {
+    "razorpay": "^2.9.4",
+    "firebase-admin": "^12.1.0"
+  }
+}

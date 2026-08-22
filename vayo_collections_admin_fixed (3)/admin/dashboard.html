@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Vayo Collections Admin</title>
+<link rel="icon" type="image/svg+xml" href="../images/logo.svg">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <!-- Sidebar -->
+  <aside class="admin-side">
+    <div class="admin-logo"><img src="../images/logo.svg" alt="Vayo Collections">Vayo <em>Collections</em><small>Admin Panel</small></div>
+    <nav class="admin-nav" id="sideNav">
+      <a href="#overview" data-tab="overview" class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Overview
+      </a>
+      <a href="#products" data-tab="products">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20.5 7.3L12 2 3.5 7.3v9.4L12 22l8.5-5.3z"/><path d="M3.5 7.3L12 12l8.5-4.7"/><path d="M12 12v10"/></svg>
+        Products
+      </a>
+      <a href="#orders" data-tab="orders">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L4.5 3H2"/><circle cx="9.5" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg>
+        Orders
+      </a>
+      <a href="#categories" data-tab="categories">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Categories
+      </a>
+      <a href="#homepage" data-tab="homepage">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+        Homepage
+      </a>
+      <a href="#instagram" data-tab="instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        Instagram
+      </a>
+      <a href="#facebook" data-tab="facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M15 8h2V4h-2a4 4 0 00-4 4v3H9v4h2v7h4v-7h2.5l.5-4H15V8z"/></svg>
+        Facebook
+      </a>
+      <a href="#social" data-tab="social">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M8.1 10.9l7.8-3.8M8.1 13.1l7.8 3.8"/></svg>
+        Social Media
+      </a>
+      <a href="#customers" data-tab="customers">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="3.3"/><path d="M4.5 20c1.4-4.2 4-6.3 7.5-6.3s6.1 2.1 7.5 6.3"/></svg>
+        Customers
+      </a>
+      <a href="#coupons" data-tab="coupons">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 10l8-7 10 10-8 7z"/><circle cx="8.5" cy="10.5" r="1.3"/></svg>
+        Coupons
+      </a>
+      <a href="#banners" data-tab="banners">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 15l5-4 4 3 5-5 4 4"/></svg>
+        Banners
+      </a>
+      <a href="#reviews" data-tab="reviews">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4-6.2-4.6-6.2 4.6 2.4-7.4L2 9.4h7.6z"/></svg>
+        Reviews
+      </a>
+      <a href="#reports" data-tab="reports">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
+        Reports
+      </a>
+      <a href="#settings" data-tab="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        Settings
+      </a>
+    </nav>
+    <div class="admin-side-foot">
+      <div class="admin-user"><div><b id="adminEmail">—</b>Signed in</div></div>
+      <button class="btn btn-ghost btn-sm btn-block" id="signOutBtn">Sign Out</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="admin-main">
+    <div class="admin-mobile-nav" id="mobileNav">
+      <a href="#overview" data-tab="overview" class="active">Overview</a>
+      <a href="#products" data-tab="products">Products</a>
+      <a href="#orders" data-tab="orders">Orders</a>
+      <a href="#categories" data-tab="categories">Categories</a>
+      <a href="#homepage" data-tab="homepage">Homepage</a>
+      <a href="#instagram" data-tab="instagram">Instagram</a>
+      <a href="#facebook" data-tab="facebook">Facebook</a>
+      <a href="#social" data-tab="social">Social</a>
+      <a href="#customers" data-tab="customers">Customers</a>
+      <a href="#coupons" data-tab="coupons">Coupons</a>
+      <a href="#banners" data-tab="banners">Banners</a>
+      <a href="#reviews" data-tab="reviews">Reviews</a>
+      <a href="#reports" data-tab="reports">Reports</a>
+      <a href="#settings" data-tab="settings">Settings</a>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section class="tab-section" id="tab-overview">
+      <div class="admin-topbar"><h1>Overview</h1></div>
+      <div class="stat-row">
+        <div class="stat-card"><span>Total Products</span><b id="statProducts">—</b></div>
+        <div class="stat-card"><span>Total Categories</span><b id="statCategories">—</b></div>
+        <div class="stat-card"><span>Total Orders</span><b id="statOrders">—</b></div>
+        <div class="stat-card"><span>Total Customers</span><b id="statCustomers">—</b></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-card"><span>Total Sales (Paid)</span><b id="statRevenue">—</b></div>
+        <div class="stat-card"><span>Low Stock (&lt;5)</span><b id="statLowStock">—</b></div>
+        <div class="stat-card"><span>Pending Orders</span><b id="statPending">—</b></div>
+        <div class="stat-card"><span>New Arrivals Live</span><b id="statNewArrivals">—</b></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Quick Actions</h3></div>
+        <div class="panel-body" style="display:flex;flex-wrap:wrap;gap:12px">
+          <button class="btn btn-solid btn-sm" data-tab="products" onclick="showTab('products');history.replaceState(null,'','#products');document.getElementById('addProductBtn').click();">+ Add Product</button>
+          <button class="btn btn-ghost btn-sm" data-tab="categories" onclick="showTab('categories');history.replaceState(null,'','#categories');document.getElementById('addCategoryBtn').click();">+ Add Category</button>
+          <button class="btn btn-ghost btn-sm" data-tab="banners" onclick="showTab('banners');history.replaceState(null,'','#banners');document.getElementById('addBannerBtn').click();">+ Add Banner</button>
+          <button class="btn btn-ghost btn-sm" data-tab="instagram" onclick="showTab('instagram');history.replaceState(null,'','#instagram');document.getElementById('addInstagramBtn').click();">+ Add Instagram Post</button>
+          <a href="#orders" data-tab="orders" class="btn btn-ghost btn-sm">View Orders</a>
+          <a href="#homepage" data-tab="homepage" class="btn btn-ghost btn-sm">Edit Homepage</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Recent Orders</h3><a href="#orders" data-tab="orders" class="btn btn-ghost btn-sm">View All</a></div>
+        <div class="panel-body table-wrap">
+          <table>
+            <thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th><th>Date</th></tr></thead>
+            <tbody id="recentOrdersBody"><tr class="empty-row"><td colspan="5">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Low Stock Products</h3><a href="#products" data-tab="products" class="btn btn-ghost btn-sm">View All</a></div>
+        <div class="panel-body table-wrap">
+          <table>
+            <thead><tr><th>Product</th><th>Category</th><th>Stock</th></tr></thead>
+            <tbody id="lowStockBody"><tr class="empty-row"><td colspan="3">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="tab-section" id="tab-products" style="display:none">
+      <div class="admin-topbar">
+        <h1>Products</h1>
+        <button class="btn btn-solid" id="addProductBtn">+ Add Product</button>
+      </div>
+      <div class="panel">
+        <div class="panel-body table-wrap">
+          <table>
+            <thead><tr><th>Product</th><th>Category</th><th>Gender</th><th>Price</th><th>Stock</th><th>Status</th><th></th></tr></thead>
+            <tbody id="productsBody"><tr class="empty-row"><td colspan="7">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORDERS -->
+    <section class="tab-section" id="tab-orders" style="display:none">
+      <div class="admin-topbar"><h1>Orders</h1></div>
+      <div class="panel">
+        <div class="panel-body table-wrap">
+          <table>
+            <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th><th>Date</th></tr></thead>
+            <tbody id="ordersBody"><tr class="empty-row"><td colspan="7">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="tab-section" id="tab-categories" style="display:none">
+      <div class="admin-topbar">
+        <h1>Categories</h1>
+        <button class="btn btn-solid" id="addCategoryBtn">+ Add Category</button>
+      </div>
+      <div class="panel">
+        <div class="panel-body table-wrap">
+          <table>
+            <thead><tr><th>Order</th><th>Category</th><th>Products</th><th>Status</th><th></th></tr></thead>
+            <tbody id="categoriesBody"><tr class="empty-row"><td colspan="5">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOMEPAGE MANAGER -->
+    <section class="tab-section" id="tab-homepage" style="display:none">
+      <div class="admin-topbar"><h1>Homepage Manager</h1></div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Hero Section</h3></div>
+        <div class="panel-body">
+          <form id="heroForm">
+            <div class="form-grid">
+              <div class="field">
+                <label>Desktop Hero Image</label>
+                <div class="dropzone" id="heroDesktopDropzone">
+                  <img id="heroDesktopPreview" style="display:none">
+                  <span id="heroDesktopText">Click to upload (1920×900 recommended)</span>
+                </div>
+                <input type="file" accept="image/*" id="heroDesktopInput" style="display:none">
+                <input type="hidden" name="heroDesktop">
+              </div>
+              <div class="field">
+                <label>Mobile Hero Image</label>
+                <div class="dropzone" id="heroMobileDropzone">
+                  <img id="heroMobilePreview" style="display:none">
+                  <span id="heroMobileText">Click to upload (900×1200 recommended)</span>
+                </div>
+                <input type="file" accept="image/*" id="heroMobileInput" style="display:none">
+                <input type="hidden" name="heroMobile">
+              </div>
+              <div class="field full"><label>Heading</label><input name="heading" placeholder="Fine Fashion, Handpicked For You."></div>
+              <div class="field full"><label>Subtitle</label><textarea name="subtitle" rows="2" placeholder="A short line that appears under the heading"></textarea></div>
+              <div class="field"><label>Button Text</label><input name="btnText" placeholder="Shop The Collection"></div>
+              <div class="field"><label>Button Link</label><input name="btnLink" placeholder="shop.html"></div>
+            </div>
+            <button type="submit" class="btn btn-solid" id="heroSaveBtn">Save Hero Section</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Homepage Sections</h3></div>
+        <p class="panel-sub">Toggle sections on/off and reorder how they appear on the homepage — updates instantly, no redeploy needed.</p>
+        <div class="panel-body">
+          <div class="reorder-list" id="sectionOrderList"></div>
+          <button type="button" class="btn btn-solid" id="saveSectionsBtn" style="margin-top:18px">Save Section Order</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTAGRAM MANAGER -->
+    <section class="tab-section" id="tab-instagram" style="display:none">
+      <div class="admin-topbar">
+        <h1>Instagram Manager</h1>
+        <button class="btn btn-solid" id="addInstagramBtn">+ Add Post</button>
+      </div>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="content-grid" id="instagramGrid"><p style="color:var(--muted)">Loading…</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FACEBOOK MANAGER -->
+    <section class="tab-section" id="tab-facebook" style="display:none">
+      <div class="admin-topbar">
+        <h1>Facebook Manager</h1>
+        <button class="btn btn-solid" id="addFacebookBtn">+ Add Post</button>
+      </div>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="content-grid" id="facebookGrid"><p style="color:var(--muted)">Loading…</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL MEDIA -->
+    <section class="tab-section" id="tab-social" style="display:none">
+      <div class="admin-topbar"><h1>Social Media Links</h1></div>
+      <div class="panel">
+        <div class="panel-body">
+          <form id="socialForm">
+            <div class="social-row"><label>Instagram</label><input name="instagramUrl" placeholder="https://instagram.com/yourshop"><label class="switch"><input type="checkbox" name="instagramEnabled"><span class="slider"></span></label></div>
+            <div class="social-row"><label>Facebook</label><input name="facebookUrl" placeholder="https://facebook.com/yourshop"><label class="switch"><input type="checkbox" name="facebookEnabled"><span class="slider"></span></label></div>
+            <div class="social-row"><label>WhatsApp</label><input name="whatsappNumber" placeholder="91XXXXXXXXXX"><label class="switch"><input type="checkbox" name="whatsappEnabled"><span class="slider"></span></label></div>
+            <div class="social-row"><label>YouTube</label><input name="youtubeUrl" placeholder="https://youtube.com/@yourshop"><label class="switch"><input type="checkbox" name="youtubeEnabled"><span class="slider"></span></label></div>
+            <div class="social-row"><label>Pinterest</label><input name="pinterestUrl" placeholder="https://pinterest.com/yourshop"><label class="switch"><input type="checkbox" name="pinterestEnabled"><span class="slider"></span></label></div>
+            <div class="social-row"><label>Other Link</label><input name="otherUrl" placeholder="https://…"><label class="switch"><input type="checkbox" name="otherEnabled"><span class="slider"></span></label></div>
+            <div class="field" style="margin-top:16px"><label>Other Link Label</label><input name="otherLabel" placeholder="e.g. Telegram"></div>
+            <button type="submit" class="btn btn-solid" style="margin-top:8px">Save Social Links</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOMERS -->
+    <section class="tab-section" id="tab-customers" style="display:none">
+      <div class="admin-topbar"><h1>Customers</h1></div>
+      <div class="panel">
+        <div class="panel-body table-wrap">
+          <table>
+            <thead><tr><th>Customer</th><th>Email</th><th>Orders</th><th>Total Spent</th><th>Joined</th></tr></thead>
+            <tbody id="customersBody"><tr class="empty-row"><td colspan="5">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUPONS -->
+    <section class="tab-section" id="tab-coupons" style="display:none">
+      <div class="admin-topbar">
+        <h1>Coupons</h1>
+        <button class="btn btn-solid" id="addCouponBtn">+ Add Coupon</button>
+      </div>
+      <div class="panel">
+        <div class="panel-body table-wrap">
+          <table>
+            <thead><tr><th>Code</th><th>Discount</th><th>Min Order</th><th>Uses</th><th>Expires</th><th>Status</th><th></th></tr></thead>
+            <tbody id="couponsBody"><tr class="empty-row"><td colspan="7">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANNERS -->
+    <section class="tab-section" id="tab-banners" style="display:none">
+      <div class="admin-topbar">
+        <h1>Banners</h1>
+        <button class="btn btn-solid" id="addBannerBtn">+ Add Banner</button>
+      </div>
+      <div class="panel">
+        <div class="panel-body table-wrap">
+          <table>
+            <thead><tr><th>Banner</th><th>Title</th><th>Link</th><th>Status</th><th></th></tr></thead>
+            <tbody id="bannersBody"><tr class="empty-row"><td colspan="5">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="tab-section" id="tab-reviews" style="display:none">
+      <div class="admin-topbar"><h1>Reviews</h1></div>
+      <div class="panel">
+        <div class="panel-body table-wrap">
+          <table>
+            <thead><tr><th>Product</th><th>Customer</th><th>Rating</th><th>Comment</th><th>Status</th><th></th></tr></thead>
+            <tbody id="reviewsBody"><tr class="empty-row"><td colspan="6">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPORTS -->
+    <section class="tab-section" id="tab-reports" style="display:none">
+      <div class="admin-topbar"><h1>Reports</h1></div>
+      <div class="stat-row">
+        <div class="stat-card"><span>Revenue (30 days)</span><b id="repRevenue30">—</b></div>
+        <div class="stat-card"><span>Orders (30 days)</span><b id="repOrders30">—</b></div>
+        <div class="stat-card"><span>Avg. Order Value</span><b id="repAOV">—</b></div>
+        <div class="stat-card"><span>Conversion (Orders/Customers)</span><b id="repConv">—</b></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Top Selling Products</h3></div>
+        <div class="panel-body table-wrap">
+          <table>
+            <thead><tr><th>Product</th><th>Units Sold</th><th>Revenue</th></tr></thead>
+            <tbody id="topProductsBody"><tr class="empty-row"><td colspan="3">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Orders by Status</h3></div>
+        <div class="panel-body" id="statusBreakdown"></div>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="tab-section" id="tab-settings" style="display:none">
+      <div class="admin-topbar"><h1>Settings</h1></div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Website Settings</h3></div>
+        <div class="panel-body">
+          <form id="websiteSettingsForm">
+            <div class="form-grid">
+              <div class="field">
+                <label>Logo</label>
+                <div class="dropzone" id="logoDropzone">
+                  <img id="logoPreview" style="display:none">
+                  <span id="logoText">Click to upload logo (PNG, up to 15MB)</span>
+                </div>
+                <input type="file" accept="image/*" id="logoInput" style="display:none">
+                <input type="hidden" name="logo">
+              </div>
+              <div class="field">
+                <label>Favicon</label>
+                <div class="dropzone" id="faviconDropzone">
+                  <img id="faviconPreview" style="display:none">
+                  <span id="faviconText">Click to upload favicon (square PNG)</span>
+                </div>
+                <input type="file" accept="image/*" id="faviconInput" style="display:none">
+                <input type="hidden" name="favicon">
+              </div>
+              <div class="field"><label>Store Name</label><input name="storeName" placeholder="Vayo Collections"></div>
+              <div class="field"><label>Support WhatsApp Number</label><input name="whatsapp" placeholder="91XXXXXXXXXX"></div>
+              <div class="field small-note" style="align-self:end">Used for reference only — to control the WhatsApp button/icon shown on the website, set the number under <b>Social Media</b>.</div>
+              <div class="field"><label>Contact Email</label><input type="email" name="contactEmail" placeholder="hello@yourshop.com"></div>
+              <div class="field"><label>Contact Phone</label><input name="contactPhone" placeholder="+91 XXXXXXXXXX"></div>
+              <div class="field full"><label>Store Address</label><input name="address" placeholder="Shop address shown on Contact page"></div>
+              <div class="field full"><label>Store Tagline</label><input name="tagline" placeholder="Ornaments for every story you wear"></div>
+              <div class="field full"><label>Notice Bar Text</label><input name="noticeBar" placeholder="Free shipping on orders above ₹999"></div>
+            </div>
+            <button type="submit" class="btn btn-solid">Save Website Settings</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Shipping Settings</h3></div>
+        <div class="panel-body">
+          <form id="shippingSettingsForm">
+            <div class="form-grid">
+              <div class="field"><label>Flat Shipping Rate (₹)</label><input type="number" min="0" name="flatRate" placeholder="79"></div>
+              <div class="field"><label>Free Shipping Above (₹)</label><input type="number" min="0" name="freeAbove" placeholder="999"></div>
+            </div>
+            <button type="submit" class="btn btn-solid">Save Shipping Settings</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Payment Settings</h3></div>
+        <div class="panel-body">
+          <form id="paymentSettingsForm">
+            <div class="form-grid">
+              <div class="field full"><label>Razorpay Key ID</label><input name="razorpayKeyId" placeholder="rzp_live_xxx"></div>
+            </div>
+            <p style="color:var(--muted);font-size:.8rem;margin:-6px 0 18px">Only the public Key ID is stored here. The Key Secret must only ever live in your Netlify Function environment variables — never in Firestore, HTML or GitHub.</p>
+            <button type="submit" class="btn btn-solid">Save Payment Settings</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Product form modal -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal" style="max-width:640px">
+    <button class="modal-close" data-close-modal="productModal">✕</button>
+    <div class="modal-form-wrap">
+      <h2 id="productModalTitle">Add Product</h2>
+      <form id="productForm">
+        <input type="hidden" name="id">
+        <div class="field">
+          <label>Product Images <span style="color:var(--muted);font-weight:400">(first image is the cover — click ◀▶ to reorder)</span></label>
+          <div class="gallery-grid" id="galleryGrid"></div>
+          <div class="gallery-drop" id="galleryDrop">
+            <span id="galleryDropText">Click to add image(s) — JPG/PNG, up to 15MB each</span>
+          </div>
+          <input type="file" accept="image/*" id="galleryInput" multiple style="display:none">
+          <input type="hidden" name="images">
+        </div>
+        <div class="form-grid">
+          <div class="field full"><label>Product Name</label><input required name="name" placeholder="e.g. Floral Wrap Midi Dress"></div>
+          <div class="field full"><label>Description</label><textarea name="description" rows="3" placeholder="Short product description shown on the quick-view"></textarea></div>
+          <div class="field"><label>Category</label><input required name="category" list="categoryList" placeholder="e.g. Dresses"></div>
+          <div class="field"><label>Collection</label><input name="collection" placeholder="e.g. Summer '26"></div>
+          <div class="field"><label>Gender</label>
+            <select required name="gender">
+              <option value="Women">Women</option>
+              <option value="Men">Men</option>
+              <option value="Unisex">Unisex</option>
+            </select>
+          </div>
+          <div class="field"><label>Badge (optional)</label><input name="badge" placeholder="e.g. Best Seller"></div>
+          <div class="field"><label>Price (₹)</label><input required type="number" min="0" name="price" placeholder="1299"></div>
+          <div class="field"><label>MRP (₹, optional)</label><input type="number" min="0" name="mrp" placeholder="1799"></div>
+          <div class="field"><label>Sale Price (₹, optional)</label><input type="number" min="0" name="salePrice" placeholder="999"></div>
+          <div class="field"><label>Stock Quantity</label><input required type="number" min="0" name="stock" placeholder="15"></div>
+          <div class="field full">
+            <label>Sizes / Variants</label>
+            <div class="chip-input-wrap" id="sizeChipWrap">
+              <input id="sizeChipInput" placeholder="Type a size (S, M, L, 38, ...) and press Enter">
+            </div>
+            <input type="hidden" name="sizes">
+          </div>
+          <div class="field"><label>Visibility</label>
+            <select name="active"><option value="true">Visible in store</option><option value="false">Hidden</option></select>
+          </div>
+          <div class="field">
+            <label class="checkline"><input type="checkbox" name="featured"> Featured product</label>
+            <label class="checkline"><input type="checkbox" name="newArrival"> New Arrival</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-solid btn-block" id="productSaveBtn">Save Product</button>
+      </form>
+    </div>
+  </div>
+</div>
+<datalist id="categoryList">
+  <option value="Necklaces"><option value="Earrings"><option value="Bangles"><option value="Bracelets">
+  <option value="Rings"><option value="Anklets"><option value="Bridal Sets">
+</datalist>
+
+<!-- Category form modal -->
+<div class="modal-overlay" id="categoryModal">
+  <div class="modal" style="max-width:480px">
+    <button class="modal-close" data-close-modal="categoryModal">✕</button>
+    <div class="modal-form-wrap">
+      <h2 id="categoryModalTitle">Add Category</h2>
+      <form id="categoryForm">
+        <input type="hidden" name="id">
+        <div class="field">
+          <label>Category Image</label>
+          <div class="dropzone" id="categoryDropzone">
+            <img id="categoryDropzonePreview" style="display:none">
+            <span id="categoryDropzoneText">Click to upload an image (JPG/PNG, up to 15MB)</span>
+          </div>
+          <input type="file" accept="image/*" id="categoryImageInput" style="display:none">
+          <input type="hidden" name="image">
+        </div>
+        <div class="field"><label>Name</label><input required name="name" placeholder="e.g. Dresses"></div>
+        <div class="field full"><label>Description</label><textarea name="description" rows="2" placeholder="Short line shown under the category name (optional)"></textarea></div>
+        <div class="form-grid">
+          <div class="field"><label>Display Order</label><input type="number" min="0" name="displayOrder" placeholder="0"></div>
+          <div class="field"><label>Status</label>
+            <select name="active"><option value="true">Active</option><option value="false">Hidden</option></select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-solid btn-block" id="categorySaveBtn">Save Category</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Coupon form modal -->
+<div class="modal-overlay" id="couponModal">
+  <div class="modal" style="max-width:520px">
+    <button class="modal-close" data-close-modal="couponModal">✕</button>
+    <div class="modal-form-wrap">
+      <h2 id="couponModalTitle">Add Coupon</h2>
+      <form id="couponForm">
+        <input type="hidden" name="id">
+        <div class="form-grid">
+          <div class="field full"><label>Coupon Code</label><input required name="code" placeholder="e.g. WELCOME10" style="text-transform:uppercase"></div>
+          <div class="field"><label>Discount Type</label>
+            <select name="type"><option value="percent">Percentage (%)</option><option value="flat">Flat Amount (₹)</option></select>
+          </div>
+          <div class="field"><label>Discount Value</label><input required type="number" min="0" name="value" placeholder="10"></div>
+          <div class="field"><label>Minimum Order (₹)</label><input type="number" min="0" name="minOrder" placeholder="0"></div>
+          <div class="field"><label>Max Uses (optional)</label><input type="number" min="0" name="maxUses" placeholder="Unlimited"></div>
+          <div class="field"><label>Expiry Date (optional)</label><input type="date" name="expiresAt"></div>
+          <div class="field"><label>Status</label>
+            <select name="active"><option value="true">Active</option><option value="false">Disabled</option></select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-solid btn-block" id="couponSaveBtn">Save Coupon</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Banner form modal -->
+<div class="modal-overlay" id="bannerModal">
+  <div class="modal" style="max-width:520px">
+    <button class="modal-close" data-close-modal="bannerModal">✕</button>
+    <div class="modal-form-wrap">
+      <h2 id="bannerModalTitle">Add Banner</h2>
+      <form id="bannerForm">
+        <input type="hidden" name="id">
+        <div class="field"><label>Image URL</label><input required name="image" placeholder="https://…"></div>
+        <div class="field"><label>Title</label><input name="title" placeholder="Festive Sale — Up to 30% Off"></div>
+        <div class="field"><label>Link URL (optional)</label><input name="link" placeholder="shop.html?category=Bridal%20Sets"></div>
+        <div class="field"><label>Status</label>
+          <select name="active"><option value="true">Active</option><option value="false">Hidden</option></select>
+        </div>
+        <button type="submit" class="btn btn-solid btn-block" id="bannerSaveBtn">Save Banner</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Instagram post modal -->
+<div class="modal-overlay" id="instagramModal">
+  <div class="modal" style="max-width:520px">
+    <button class="modal-close" data-close-modal="instagramModal">✕</button>
+    <div class="modal-form-wrap">
+      <h2 id="instagramModalTitle">Add Instagram Post</h2>
+      <form id="instagramForm">
+        <input type="hidden" name="id">
+        <div class="field">
+          <label>Image or Video</label>
+          <div class="dropzone" id="instagramDropzone">
+            <img id="instagramPreview" style="display:none">
+            <span id="instagramDropzoneText">Click to upload image (up to 15MB) or video (up to 25MB)</span>
+          </div>
+          <input type="file" accept="image/*,video/*" id="instagramInput" style="display:none">
+          <input type="hidden" name="mediaUrl">
+          <input type="hidden" name="mediaType">
+        </div>
+        <div class="field full"><label>Caption</label><textarea name="caption" rows="2" placeholder="Post caption"></textarea></div>
+        <div class="field full"><label>Instagram Post URL</label><input name="igUrl" placeholder="https://instagram.com/p/…"></div>
+        <div class="form-grid">
+          <div class="field"><label>Link To</label>
+            <select name="linkType"><option value="none">Nothing</option><option value="product">A Product</option><option value="collection">A Collection/Category</option></select>
+          </div>
+          <div class="field"><label>Product / Collection Name</label><input name="linkValue" placeholder="e.g. Floral Wrap Midi Dress"></div>
+          <div class="field"><label>Status</label>
+            <select name="active"><option value="true">Visible on website</option><option value="false">Hidden</option></select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-solid btn-block" id="instagramSaveBtn">Save Post</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Facebook post modal -->
+<div class="modal-overlay" id="facebookModal">
+  <div class="modal" style="max-width:520px">
+    <button class="modal-close" data-close-modal="facebookModal">✕</button>
+    <div class="modal-form-wrap">
+      <h2 id="facebookModalTitle">Add Facebook Post</h2>
+      <form id="facebookForm">
+        <input type="hidden" name="id">
+        <div class="field">
+          <label>Image or Video</label>
+          <div class="dropzone" id="facebookDropzone">
+            <img id="facebookPreview" style="display:none">
+            <span id="facebookDropzoneText">Click to upload image (up to 15MB) or video (up to 25MB)</span>
+          </div>
+          <input type="file" accept="image/*,video/*" id="facebookInput" style="display:none">
+          <input type="hidden" name="mediaUrl">
+          <input type="hidden" name="mediaType">
+        </div>
+        <div class="field full"><label>Title</label><input name="title" placeholder="Promotional headline"></div>
+        <div class="field full"><label>Caption</label><textarea name="caption" rows="2" placeholder="Post caption"></textarea></div>
+        <div class="field full"><label>Facebook Post URL</label><input name="fbUrl" placeholder="https://facebook.com/…"></div>
+        <div class="form-grid">
+          <div class="field"><label>Link To</label>
+            <select name="linkType"><option value="none">Nothing</option><option value="product">A Product</option><option value="collection">A Collection/Category</option></select>
+          </div>
+          <div class="field"><label>Product / Collection Name</label><input name="linkValue" placeholder="e.g. Floral Wrap Midi Dress"></div>
+          <div class="field"><label>Status</label>
+            <select name="active"><option value="true">Visible on website</option><option value="false">Hidden</option></select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-solid btn-block" id="facebookSaveBtn">Save Post</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/admin.js"></script>
+</body>
+</html>

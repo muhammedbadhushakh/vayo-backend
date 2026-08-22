@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 128" role="img" aria-label="Vayo Collection">
+  <defs>
+    <linearGradient id="vcGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFDDC8"/>
+      <stop offset="55%" stop-color="#FFC6A8"/>
+      <stop offset="100%" stop-color="#C98A6D"/>
+    </linearGradient>
+  </defs>
+
+  <!-- pendant bail / gem -->
+  <path d="M60 6 L71 19 L60 32 L49 19 Z" fill="url(#vcGold)"/>
+  <line x1="60" y1="32" x2="60" y2="44" stroke="url(#vcGold)" stroke-width="1.6"/>
+
+  <!-- outer rings -->
+  <circle cx="60" cy="80" r="46" fill="none" stroke="url(#vcGold)" stroke-width="2.6"/>
+  <circle cx="60" cy="80" r="39" fill="none" stroke="url(#vcGold)" stroke-width="0.8" opacity="0.55"/>
+
+  <!-- monogram -->
+  <text x="60" y="100" text-anchor="middle" font-family="'Cormorant Garamond', 'Times New Roman', Georgia, serif" font-style="italic" font-size="56" fill="url(#vcGold)">V</text>
+
+  <!-- filigree flourish -->
+  <circle cx="6" cy="80" r="2.2" fill="#FFC6A8"/>
+  <circle cx="114" cy="80" r="2.2" fill="#FFC6A8"/>
+  <line x1="13" y1="80" x2="29" y2="80" stroke="#FFC6A8" stroke-width="1" opacity="0.65"/>
+  <line x1="91" y1="80" x2="107" y2="80" stroke="#FFC6A8" stroke-width="1" opacity="0.65"/>
+</svg>
