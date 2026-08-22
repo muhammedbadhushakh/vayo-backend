@@ -1,0 +1,18 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# SPA-style pages are all static .html files here, so no redirect
+# rules are needed for routing — only the two payment endpoints.
+[[redirects]]
+  from = "/api/create-order"
+  to = "/.netlify/functions/create-order"
+  status = 200
+
+[[redirects]]
+  from = "/api/verify-payment"
+  to = "/.netlify/functions/verify-payment"
+  status = 200

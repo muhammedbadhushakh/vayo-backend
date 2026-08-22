@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login — Vayo Collections</title>
+<link rel="icon" type="image/svg+xml" href="../images/logo.svg">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="brand"><img src="../images/logo.svg" alt="Vayo Collections" class="brand-logo"><div>Vayo <em>Collections</em><small>Admin Panel</small></div></div>
+    <p class="sub">Sign in to manage products and orders</p>
+
+    <div class="login-error" id="loginError"></div>
+
+    <form id="loginForm">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" name="email" required placeholder="admin@vayocollection.com">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" name="password" required placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn btn-solid btn-block" id="loginBtn">Sign In</button>
+    </form>
+
+    <p style="text-align:center;font-size:.72rem;color:var(--muted);margin-top:22px;line-height:1.6">
+      First time here? Create the admin account from the<br>Firebase Console → Authentication → Add User.<br>
+      See <b>README.md</b> for the full setup guide.
+    </p>
+    <p style="text-align:center;margin-top:18px"><a href="../index.html" style="font-size:.78rem;color:var(--muted)">← Back to store</a></p>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script>
+  const form = document.getElementById('loginForm');
+  const errorBox = document.getElementById('loginError');
+  const loginBtn = document.getElementById('loginBtn');
+
+  // Admin sessions should not silently persist across browser restarts —
+  // this can be a shared/public machine, so require the password again
+  // once the browser (not just the tab) is closed and reopened. SESSION
+  // persistence keeps you signed in while this tab/window stays open
+  // (so reloading dashboard.html doesn't kick you out mid-work) but
+  // forgets you once the browser closes, unlike the default LOCAL
+  // persistence which remembers you indefinitely.
+  auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).catch(() => {});
+
+  // If already signed in (within this same browser session), skip
+  // straight to dashboard instead of forcing a redundant re-login.
+  auth.onAuthStateChanged((user) => {
+    if (user) window.location.href = '/admin/dashboard.html';
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox.classList.remove('show');
+    loginBtn.disabled = true;
+    loginBtn.textContent = 'Signing in…';
+
+    if (typeof DEMO_MODE !== 'undefined' && DEMO_MODE) {
+      errorBox.textContent = 'Connect Firebase first — see README.md for setup steps.';
+      errorBox.classList.add('show');
+      loginBtn.disabled = false;
+      loginBtn.textContent = 'Sign In';
+      return;
+    }
+
+    try {
+      await auth.signInWithEmailAndPassword(form.email.value.trim(), form.password.value);
+      window.location.href = '/admin/dashboard.html';
+    } catch (err) {
+      errorBox.textContent = err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found'
+        ? 'Incorrect email or password.'
+        : err.message;
+      errorBox.classList.add('show');
+      loginBtn.disabled = false;
+      loginBtn.textContent = 'Sign In';
+    }
+  });
+</script>
+</body>
+</html>
